@@ -270,14 +270,14 @@ COOLDOWN_TIME =0
 # Handler for /bgmi command
 @bot.message_handler(commands=['bgmi'])
 def handle_attack(message):
-    user_id = str(message.chat.id)
-    
+    user_id = str(message.from_user.id)  # ✅ Ab user ka actual ID hoga, group ka nahi
+
     command = message.text.split()
     if len(command) != 4:
         response = "❌ <b>ᴜsᴀɢᴇ ᴇʀʀᴏʀ:</b>\n\n✅ <b>ᴘʟᴇᴀsᴇ ᴜsᴇ:</b>\n<code>/bgmi &lt;target&gt; &lt;port&gt; &lt;time&gt;</code>"
         send_video_with_caption(message.chat.id, response)
         return
-    
+
     if user_id in allowed_user_ids:
         if user_id not in admin_id:
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 3:
@@ -288,14 +288,8 @@ def handle_attack(message):
         
         target, port, time = command[1], int(command[2]), int(command[3])
 
-        # 🔥 **Attacker Info**
-        attacker_info = bot.get_chat(user_id)
-        if attacker_info.username:
-            attacker_name = f"@{attacker_info.username}"
-        elif attacker_info.first_name:
-            attacker_name = f"{attacker_info.first_name}"
-        else:
-            attacker_name = f"User ID: {user_id}"
+        # 🔥 **Attacker Info (Now Fixed)**
+        attacker_name = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.first_name}"
 
         if time > 300:
             response = "⚠️ | <b>ᴇʀʀᴏʀ:</b> ᴛɪᴍᴇ ɪɴᴛᴇʀᴠᴀʟ ᴍᴜsᴛ ʙᴇ ʟᴇss ᴛʜᴀɴ 300 sᴇᴄᴏɴᴅs. | ⚠️"
@@ -304,7 +298,7 @@ def handle_attack(message):
             record_command_logs(user_id, '/bgmi', target, port, time)
             log_command(user_id, target, port, time)
 
-            # 🔥 **Attack Start Message**
+            # **🔥 Attack Start Message**
             start_message = f"""
 ┌───🚀 <b>ғʟᴏᴏᴅɪɴɢ sᴛᴀʀᴛᴇᴅ</b> 🚀───┐  
 
