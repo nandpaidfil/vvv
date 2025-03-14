@@ -20,7 +20,35 @@ LOG_FILE = "log.txt"
 VIDEO_URLS = [
     "https://envs.sh/oQ7.mp4",
     "https://envs.sh/mc2.mp4",
-    "https://envs.sh/mcd.mp4"
+    "https://envs.sh/mcd.mp4",
+    "https://envs.sh/vJC.mp4",
+    "https://envs.sh/vJ5.mp4",
+    "https://envs.sh/vJY.mp4",
+    "https://envs.sh/vJz.mp4",
+    "https://envs.sh/vJK.mp4",
+    "https://envs.sh/vJL.mp4",
+    "https://envs.sh/vJZ.mp4",
+    "https://envs.sh/vJc.mp4",
+    "https://envs.sh/vJj.mp4",
+    "https://envs.sh/vJA.mp4",
+    "https://envs.sh/vJ_.mp4",
+    "https://envs.sh/v9J.mp4",
+    "https://envs.sh/NMB.mp4",
+    "https://envs.sh/NMW.mp4",
+    "https://envs.sh/NMS.mp4",
+    "https://envs.sh/v9J.mp4",
+    "https://envs.sh/HEF.mp4",
+    "https://envs.sh/HEt.mp4",
+    "https://envs.sh/HEe.mp4",
+    "https://envs.sh/HEi.mp4",
+    "https://envs.sh/fzk.mp4",
+    "https://envs.sh/fzl.mp4",
+    "https://envs.sh/fNm.mp4",
+    "https://envs.sh/fNy.mp4",
+    "https://envs.sh/mvB.mp4",
+    "https://envs.sh/mvp.mp4",
+    "https://envs.sh/mcd.mp4",
+    "https://envs.sh/mc2.mp4"
 ]
 
 def send_video_with_caption(chat_id, caption):
