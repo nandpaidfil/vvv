@@ -61,7 +61,13 @@ VIDEO_URLS = [
     "https://files.catbox.moe/fkttbr.mp4",
     "https://files.catbox.moe/hj3b2u.mp4",
     "https://files.catbox.moe/p4j2ui.mp4",
-    "https://files.catbox.moe/i0kwlh.mp4"
+    "https://files.catbox.moe/i0kwlh.mp4",
+    "https://files.catbox.moe/dl7zd8.mp4",
+    "https://files.catbox.moe/dl7zd8.mp4",
+    "https://files.catbox.moe/dl7zd8.mp4",
+    "https://files.catbox.moe/zl6f1b.mp4",
+    "https://files.catbox.moe/oef20x.mp4",
+    "https://files.catbox.moe/j2sg38.mp4"
 ]
 
 def send_video_with_caption(chat_id, caption):
@@ -376,6 +382,8 @@ def show_help(message):
     send_video_with_caption(message.chat.id, response)
 
 
+#XXX
+
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
@@ -385,25 +393,28 @@ def welcome_start(message):
     join_button = InlineKeyboardButton("📢 ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url="https://t.me/creativeydv")
     keyboard.add(join_button)
 
-    response = f"""
-┌── 🚀 <b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ</b> 🚀 ──┐
+    # Video Caption Message with Stylish Font & Bold Text
+    caption = f"""
+┏━━━━━━━━━━━━━━━━━━━┓
+      🚀 <b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ</b> 🚀
+┗━━━━━━━━━━━━━━━━━━━┛
 
 👤 <b>ᴜsᴇʀ:</b> <code>{user_name}</code>  
 🛠 <b>ʙᴏᴛ ᴠᴇʀsɪᴏɴ:</b> 𝟏.𝟎  
 📆 <b>ᴅᴀᴛᴇ:</b> {datetime.datetime.now().strftime('%d-%m-%Y')}  
 
-🔰 ᴛʜɪs ʙᴏᴛ ᴄᴀɴ ᴘᴇʀғᴏʀᴍ ᴠᴀʀɪᴏᴜs ᴛᴀsᴋs,  
-ɪɴᴄʟᴜᴅɪɴɢ ғʟᴏᴏᴅɪɴɢ ᴀᴛᴛᴀᴄᴋs, ᴍᴀɴᴀɢɪɴɢ ᴜsᴇʀs,  
-ᴀɴᴅ sᴇɴᴅɪɴɢ ᴍᴇssᴀɢᴇs.  
+🔰 <b>ᴛʜɪs ʙᴏᴛ ᴄᴀɴ:</b>  
+  ➥ ᴘᴇʀғᴏʀᴍ ʜɪɢʜ-ʟᴇᴠᴇʟ ғʟᴏᴏᴅɪɴɢ ᴀᴛᴛᴀᴄᴋs  
+  ➥ ᴍᴀɴᴀɢᴇ ᴜsᴇʀs ᴀɴᴅ ᴘᴇʀᴍɪssɪᴏɴs  
+  ➥ sᴇɴᴅ ʙʀᴏᴀᴅᴄᴀsᴛ ᴍᴇssᴀɢᴇs  
 
 📌 <b>ᴜsᴇ /help ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs</b>  
-🔥 ʀᴇɢᴀʀᴅs - @TMZEROO✅  
-
-└──────────────────────────┘
+🔥 <b>ʀᴇɢᴀʀᴅs - @TMZEROO✅</b>
 """
 
-    send_video_with_caption(message.chat.id, response)
-    bot.send_message(message.chat.id, "👇 ᴊᴏɪɴ ᴏᴜʀ ᴏғғɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ 👇", reply_markup=keyboard)
+    # Send Video with Caption & Inline Button
+    video_url = random.choice(VIDEO_URLS)
+    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=keyboard)
 
 #Dnn
 
