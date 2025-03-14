@@ -3,7 +3,7 @@ import subprocess
 import datetime
 import os
 import random
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
 # Insert your Telegram bot token here
 bot = telebot.TeleBot('6992301519:AAHzggvhpE7k1qeMA79JS_hBoUbHGlssYks')
@@ -394,12 +394,11 @@ def show_help(message):
 def welcome_start(message):
     user_name = message.from_user.first_name
 
-    # Inline Button for Joining Channel
-    keyboard = InlineKeyboardMarkup()
-    join_button = InlineKeyboardButton("📢 ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url="https://t.me/creativeydv")
-    keyboard.add(join_button)
+    # 🔥 **Keyboard Buttons (One Line)**
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    keyboard.add(KeyboardButton("ᴏᴡɴᴇʀ"), KeyboardButton("sᴜᴘᴘᴏʀᴛ"))
 
-    # Video Caption Message with Stylish Font & Bold Text
+    # 🔥 **Start Message**
     caption = f"""
 ┏━━━━━━━━━━━━━━━━━━━┓
       🚀 <b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ</b> 🚀
@@ -418,9 +417,36 @@ def welcome_start(message):
 🔥 <b>ʀᴇɢᴀʀᴅs - @ShrutiMusicBot✅</b>
 """
 
-    # Send Video with Caption & Inline Button
+    # 🔥 **Send Start Message with Video & Keyboard Buttons**
     video_url = random.choice(VIDEO_URLS)
     bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=keyboard)
+
+
+# 🔥 **OWNER Button Handler**
+@bot.message_handler(func=lambda message: message.text == "ᴏᴡɴᴇʀ")
+def owner_info(message):
+    # **Inline Buttons for Owners**
+    owner_markup = InlineKeyboardMarkup()
+    owner_markup.add(InlineKeyboardButton("👤 ᴏᴡɴᴇʀ", url="https://t.me/WTF_WhyMeeh"),
+                     InlineKeyboardButton("👤 ᴏᴡɴᴇʀ", url="https://t.me/Kaushik_oo7"))
+
+    caption = "👑 <b>ᴏᴡɴᴇʀs ᴏғ ᴛʜɪs ʙᴏᴛ</b>"
+    
+    video_url = random.choice(VIDEO_URLS)
+    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=owner_markup)
+
+
+# 🔥 **SUPPORT Button Handler**
+@bot.message_handler(func=lambda message: message.text == "sᴜᴘᴘᴏʀᴛ")
+def support_info(message):
+    # **Inline Button for Support Group**
+    support_markup = InlineKeyboardMarkup()
+    support_markup.add(InlineKeyboardButton("💬 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url="https://t.me/Nycreation_chatzone"))
+
+    caption = "🛠 <b>sʜᴀʀᴇ ʏᴏᴜʀ ǫᴜᴇʀʀʏ ɪɴ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</b>"
+    
+    video_url = random.choice(VIDEO_URLS)
+    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=support_markup)
 
 #Dnn
 
