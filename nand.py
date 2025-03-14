@@ -24,10 +24,10 @@ VIDEO_URLS = [
 ]
 
 def send_video_with_caption(chat_id, caption):
-    """Random video bhejne ka function"""
+    """Random video bhejne ka function with proper HTML formatting"""
     video_url = random.choice(VIDEO_URLS)
-    bot.send_video(chat_id, video=video_url, caption=caption)
-
+    bot.send_video(chat_id, video=video_url, caption=caption, parse_mode="HTML")
+    
 def read_users():
     try:
         with open(USER_FILE, "r") as file:
