@@ -3,6 +3,7 @@ import subprocess
 import datetime
 import os
 import random
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Insert your Telegram bot token here
 bot = telebot.TeleBot('6992301519:AAHzggvhpE7k1qeMA79JS_hBoUbHGlssYks')
@@ -347,37 +348,89 @@ def show_command_logs(message):
 
 @bot.message_handler(commands=['help'])
 def show_help(message):
-    help_text ='''
-/nand : for attack
-/AllCmd : All Commands.
-'''
-    for handler in bot.message_handlers:
-        if hasattr(handler, 'commands'):
-            if message.text.startswith('/help'):
-                help_text += f"{handler.commands[0]}: {handler.doc}\n"
-            elif handler.doc and 'admin' in handler.doc.lower():
-                continue
-            else:
-                help_text += f"{handler.commands[0]}: {handler.doc}\n"
-    bot.reply_to(message, help_text)
+    response = f"""
+┌── 🎯 <b>𝐇𝐄𝐋𝐏 𝐌𝐄𝐍𝐔</b> 🎯 ──┐
+
+🛠 <b>𝐔𝐬𝐞𝐫 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:</b>
+➥ <b>/bgmi2</b> <code>&lt;target&gt; &lt;port&gt; &lt;time&gt;</code> - 𝐒𝐭𝐚𝐫𝐭 𝐚𝐧 𝐚𝐭𝐭𝐚𝐜𝐤  
+➥ <b>/id</b> - 𝐆𝐞𝐭 𝐲𝐨𝐮𝐫 𝐔𝐬𝐞𝐫 𝐈𝐃  
+➥ <b>/mylogs</b> - 𝐂𝐡𝐞𝐜𝐤 𝐲𝐨𝐮𝐫 𝐜𝐨𝐦𝐦𝐚𝐧𝐝 𝐥𝐨𝐠𝐬  
+
+👑 <b>𝐀𝐝𝐦𝐢𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:</b>
+➥ <b>/add</b> <code>&lt;userID&gt;</code> - 𝐀𝐝𝐝 𝐚 𝐧𝐞𝐰 𝐮𝐬𝐞𝐫  
+➥ <b>/remove</b> <code>&lt;userID&gt;</code> - 𝐑𝐞𝐦𝐨𝐯𝐞 𝐚 𝐮𝐬𝐞𝐫  
+➥ <b>/broadcast</b> <code>&lt;message&gt;</code> - 𝐒𝐞𝐧𝐝 𝐚 𝐠𝐥𝐨𝐛𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞  
+➥ <b>/clearlogs</b> - 𝐂𝐥𝐞𝐚𝐫 𝐚𝐥𝐥 𝐥𝐨𝐠𝐬  
+➥ <b>/logs</b> - 𝐆𝐞𝐭 𝐥𝐨𝐠 𝐟𝐢𝐥𝐞  
+➥ <b>/allusers</b> - 𝐂𝐡𝐞𝐜𝐤 𝐚𝐥𝐥 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐮𝐬𝐞𝐫𝐬  
+
+📌 <b>/AllCmd</b> - 𝐆𝐞𝐭 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐜𝐨𝐦𝐦𝐚𝐧𝐝 𝐥𝐢𝐬𝐭  
+🔥 𝐑𝐞𝐠𝐚𝐫𝐝𝐬 - @TMZEROO✅  
+
+└──────────────────────────┘
+"""
+
+    send_video_with_caption(message.chat.id, response)
+
 
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f'''[ Flooding not running ]\n         get > /help 
-'''
-    bot.reply_to(message, response)
+
+    # Inline Button for Joining Channel
+    keyboard = InlineKeyboardMarkup()
+    join_button = InlineKeyboardButton("📢 ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url="https://t.me/creativeydv")
+    keyboard.add(join_button)
+
+    response = f"""
+┌── 🚀 <b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ</b> 🚀 ──┐
+
+👤 <b>ᴜsᴇʀ:</b> <code>{user_name}</code>  
+🛠 <b>ʙᴏᴛ ᴠᴇʀsɪᴏɴ:</b> 𝟏.𝟎  
+📆 <b>ᴅᴀᴛᴇ:</b> {datetime.datetime.now().strftime('%d-%m-%Y')}  
+
+🔰 ᴛʜɪs ʙᴏᴛ ᴄᴀɴ ᴘᴇʀғᴏʀᴍ ᴠᴀʀɪᴏᴜs ᴛᴀsᴋs,  
+ɪɴᴄʟᴜᴅɪɴɢ ғʟᴏᴏᴅɪɴɢ ᴀᴛᴛᴀᴄᴋs, ᴍᴀɴᴀɢɪɴɢ ᴜsᴇʀs,  
+ᴀɴᴅ sᴇɴᴅɪɴɢ ᴍᴇssᴀɢᴇs.  
+
+📌 <b>ᴜsᴇ /help ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs</b>  
+🔥 ʀᴇɢᴀʀᴅs - @TMZEROO✅  
+
+└──────────────────────────┘
+"""
+
+    send_video_with_caption(message.chat.id, response)
+    bot.send_message(message.chat.id, "👇 ᴊᴏɪɴ ᴏᴜʀ ᴏғғɪᴄɪᴀʟ ᴄʜᴀɴɴᴇʟ 👇", reply_markup=keyboard)
+
+#Dnn
 
 @bot.message_handler(commands=['AllCmd'])
 def welcome_plan(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name}, Admin Commands Are Here!!:
 
- /add <userId>
- /remove <userid>
- /broadcast
-'''
-    bot.reply_to(message, response)
+    response = f"""
+┌── 🎯 <b>𝐀𝐋𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒</b> 🎯 ──┐
+
+👤 <b>𝐔𝐬𝐞𝐫:</b> <code>{user_name}</code>
+
+⚡ <b>𝐀𝐝𝐦𝐢𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:</b>
+➥ <b>/add</b> <code>&lt;userID&gt;</code> - 𝐀𝐝𝐝 𝐚 𝐧𝐞𝐰 𝐮𝐬𝐞𝐫  
+➥ <b>/remove</b> <code>&lt;userID&gt;</code> - 𝐑𝐞𝐦𝐨𝐯𝐞 𝐚 𝐮𝐬𝐞𝐫  
+➥ <b>/broadcast</b> <code>&lt;message&gt;</code> - 𝐒𝐞𝐧𝐝 𝐚 𝐠𝐥𝐨𝐛𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞  
+
+🛠 <b>𝐎𝐭𝐡𝐞𝐫 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:</b>
+➥ <b>/bgmi2</b> <code>&lt;target&gt; &lt;port&gt; &lt;time&gt;</code> - 𝐒𝐭𝐚𝐫𝐭 𝐚𝐭𝐭𝐚𝐜𝐤  
+➥ <b>/clearlogs</b> - 𝐂𝐥𝐞𝐚𝐫 𝐚𝐥𝐥 𝐥𝐨𝐠𝐬  
+➥ <b>/logs</b> - 𝐆𝐞𝐭 𝐥𝐨𝐠 𝐟𝐢𝐥𝐞  
+➥ <b>/allusers</b> - 𝐂𝐡𝐞𝐜𝐤 𝐚𝐥𝐥 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐮𝐬𝐞𝐫𝐬  
+➥ <b>/id</b> - 𝐆𝐞𝐭 𝐲𝐨𝐮𝐫 𝐔𝐬𝐞𝐫 𝐈𝐃  
+
+🔥 𝐑𝐞𝐠𝐚𝐫𝐝𝐬 - @TMZEROO✅  
+
+└──────────────────────────┘
+"""
+
+    send_video_with_caption(message.chat.id, response)
 
 
 @bot.message_handler(commands=['broadcast'])
