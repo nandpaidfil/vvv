@@ -322,7 +322,7 @@ def handle_attack(message):
             send_video_with_caption(message.chat.id, start_message)
 
             # **Attack Execution**
-            full_command = f"./nand {target} {port} {time} 1200 900"
+            full_command = f"./mx {target} {port} {time} 1200 900"
             subprocess.run(full_command, shell=True)
 
             # 🎯 **Attack Finish Message**
