@@ -1,0 +1,38 @@
+# =====================================================
+#  🚄 NY CREATION - Railway Deployment Config
+# =====================================================
+#  🚀 Author   : Nand Yaduwanshi (@Tmzeroo)
+#  📢 Channel  : @CreativeYdv
+#  🏗 Purpose  : Deploy "nand.py" on Railway.app
+# =====================================================
+
+services:
+  ny_creation:
+    # 🏗 Use Docker to build & deploy
+    buildType: docker
+    env: python
+
+    # 📂 Define root directory for app
+    rootDir: .
+
+    # 🔢 Auto-allocate required resources
+    resources:
+      cpu: 1
+      memory: 512
+
+    # 🌍 Expose the necessary ports (if Flask is used)
+    ports:
+      - 8080
+
+    # 🔑 Load environment variables from Railway
+    envFiles:
+      - .env
+
+    # 🚀 Start command (modify if needed)
+    startCommand: "python3 nand.py"
+
+# =====================================================
+#  🚀 DEPLOY ON RAILWAY USING:
+#  1️⃣ railway init
+#  2️⃣ railway up
+# =====================================================
