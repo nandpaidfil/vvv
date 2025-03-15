@@ -99,7 +99,13 @@ VIDEO_URLS = [
     "https://files.catbox.moe/zl6f1b.mp4",
     "https://files.catbox.moe/oef20x.mp4",
     "https://files.catbox.moe/j2sg38.mp4",
-    "https://files.catbox.moe/2ezt4r.mp4"
+    "https://files.catbox.moe/2ezt4r.mp4",
+    "https://files.catbox.moe/iv1jz5.mp4",
+    "https://files.catbox.moe/7izrxr.mp4",
+    "https://files.catbox.moe/3okiei.mp4",
+    "https://files.catbox.moe/xxlvua.mp4",
+    "https://files.catbox.moe/lj5q24.mp4",
+    "https://files.catbox.moe/azsb9w.mp4"
 ]
 
 def send_video_with_caption(chat_id, caption):
