@@ -390,12 +390,17 @@ def show_help(message):
 
 #XXX
 
+# Allowed Groups
+ALLOWED_GROUPS = ["-1002182851898", "-1002214579435"]
+
+# 🔥 **Start Command with Keyboard**
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
 
-    # 🔥 **Keyboard Buttons (One Line)**
+    # 🔥 **Keyboard Buttons**
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    keyboard.add(KeyboardButton("ᴀᴛᴛᴀᴄᴋ"))
     keyboard.add(KeyboardButton("ᴏᴡɴᴇʀ"), KeyboardButton("sᴜᴘᴘᴏʀᴛ"))
 
     # 🔥 **Start Message**
@@ -417,38 +422,71 @@ def welcome_start(message):
 🔥 <b>ʀᴇɢᴀʀᴅs - @ShrutiMusicBot✅</b>
 """
 
-    # 🔥 **Send Start Message with Video & Keyboard Buttons**
-    video_url = random.choice(VIDEO_URLS)
-    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=keyboard)
+    bot.send_message(message.chat.id, caption, parse_mode="HTML", reply_markup=keyboard)
+
+
+# 🔥 **ATTACK Button Handler**
+@bot.message_handler(func=lambda message: message.text == "ᴀᴛᴛᴀᴄᴋ")
+def attack_request(message):
+    if str(message.chat.id) in ALLOWED_GROUPS:
+        bot.send_message(message.chat.id, "<b>Enter the target IP, port, and duration (in seconds) separated by spaces.</b>", parse_mode="HTML")
+        bot.register_next_step_handler(message, process_attack)
+    else:
+        bot.send_message(message.chat.id, "❌ <b>You are not allowed to use this feature.</b>", parse_mode="HTML")
+
+
+# 🔥 **Process Attack After User Input**
+def process_attack(message):
+    if str(message.chat.id) not in ALLOWED_GROUPS:
+        return
+
+    try:
+        args = message.text.split()
+        if len(args) != 3:
+            bot.send_message(message.chat.id, "❌ <b>Invalid format! Use: IP PORT TIME</b>", parse_mode="HTML")
+            return
+
+        ip, port, duration = args
+        duration = int(duration)
+
+        if duration > 300:
+            bot.send_message(message.chat.id, "⚠️ <b>Maximum attack time is 300 seconds!</b>", parse_mode="HTML")
+            return
+
+        # ✅ **Attack Execution (Using Existing bgmi handler logic)**
+        attack_command = f"/bgmi {ip} {port} {duration}"
+        bot.send_message(message.chat.id, f"✅ <b>Attack Started!</b>\n\nCommand: <code>{attack_command}</code>", parse_mode="HTML")
+
+        # ⚡ **Execute bgmi handler logic here**
+        # (Is part ko tumhare existing attack function se call karna hoga)
+
+    except Exception as e:
+        bot.send_message(message.chat.id, "❌ <b>Error processing attack. Please try again.</b>", parse_mode="HTML")
 
 
 # 🔥 **OWNER Button Handler**
 @bot.message_handler(func=lambda message: message.text == "ᴏᴡɴᴇʀ")
 def owner_info(message):
-    # **Inline Buttons for Owners**
     owner_markup = InlineKeyboardMarkup()
     owner_markup.add(InlineKeyboardButton("👤 ᴏᴡɴᴇʀ", url="https://t.me/WTF_WhyMeeh"),
                      InlineKeyboardButton("👤 ᴏᴡɴᴇʀ", url="https://t.me/Kaushik_oo7"))
 
     caption = "👑 <b>ᴏᴡɴᴇʀs ᴏғ ᴛʜɪs ʙᴏᴛ</b>"
-    
-    video_url = random.choice(VIDEO_URLS)
-    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=owner_markup)
+    bot.send_message(message.chat.id, caption, parse_mode="HTML", reply_markup=owner_markup)
 
 
 # 🔥 **SUPPORT Button Handler**
 @bot.message_handler(func=lambda message: message.text == "sᴜᴘᴘᴏʀᴛ")
 def support_info(message):
-    # **Inline Button for Support Group**
     support_markup = InlineKeyboardMarkup()
     support_markup.add(InlineKeyboardButton("💬 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url="https://t.me/Nycreation_chatzone"))
 
     caption = "🛠 <b>sʜᴀʀᴇ ʏᴏᴜʀ ǫᴜᴇʀʀʏ ɪɴ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</b>"
-    
-    video_url = random.choice(VIDEO_URLS)
-    bot.send_video(message.chat.id, video=video_url, caption=caption, parse_mode="HTML", reply_markup=support_markup)
-
+    bot.send_message(message.chat.id, caption, parse_mode="HTML", reply_markup=support_markup)
 #Dnn
+#
+#
+#
 
 @bot.message_handler(commands=['AllCmd'])
 def welcome_plan(message):
