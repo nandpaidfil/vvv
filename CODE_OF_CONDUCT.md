@@ -26,6 +26,6 @@ Welcome to **[NYCREATION]**! We aim to create a respectful, inclusive, and secur
 
 ## 🛠 Reporting Violations
 If you find any violation, **immediately report it** to the owner:  
-📩 **[CONTACT_INFO]**  
+📩 **[contact_info @TMZEROO On TG]**  
 
 Thank you for maintaining a **positive and secure** community!
