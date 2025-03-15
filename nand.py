@@ -1,3 +1,34 @@
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# =========================================================
+#
+#
+#
 import telebot
 import subprocess
 import datetime
@@ -82,6 +113,35 @@ def read_users():
             return file.read().splitlines()
     except FileNotFoundError:
         return []
+
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# ============================================================
 
 # Function to read free user IDs and their credits from the file
 def read_free_users():
@@ -267,7 +327,34 @@ def start_attack_reply(message, target, port, time):
 bgmi_cooldown = {}
 
 COOLDOWN_TIME =0
-
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# ============================================================
 # Handler for /bgmi command
 
 # ✅ Sirf Inhi Groups Ke Users Authorized Hain
@@ -390,6 +477,34 @@ def show_help(message):
 
 
 #XXX
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# ============================================================
 
 # ✅ **Allowed Groups**
 ALLOWED_GROUPS = ["-1002182851898", "-1002214579435"]
@@ -478,6 +593,34 @@ def support_info(message):
 #Dnn
 #
 #
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# ============================================================
 #
 
 @bot.message_handler(commands=['AllCmd'])
@@ -540,3 +683,32 @@ while True:
         bot.polling(none_stop=True)
     except Exception as e:
         print(e)
+
+# ============================================================
+#  NY Creation - Copyright (C) 2025 Nand Yaduwanshi
+# ============================================================
+#
+#  🚨 STRICT WARNING:  
+#  - This software is strictly for educational and security  
+#    testing purposes ONLY.  
+#  - Any illegal or malicious use is STRICTLY PROHIBITED.  
+#
+#  ❌ DO NOT REMOVE OR MODIFY THIS LICENSE!  
+#  - You CANNOT remove or alter the credit from this code.  
+#  - Any modification that removes the credit or changes  
+#    ownership will be considered a violation.  
+#
+#  🔒 LICENSE TERMS:  
+#  - Unauthorized redistribution or resale is STRICTLY FORBIDDEN.  
+#  - The creator is NOT responsible for any misuse.  
+#
+#  ⚠ LEGAL CONSEQUENCES:  
+#  - Removing this license or using this software for illegal  
+#    activities may result in strict legal action.  
+#
+#  📌 By using this software, you AGREE to these terms.  
+#
+#  🔹 Owner: Nand Yaduwanshi (@Tmzeroo)  
+#  🔹 Official Channel: @CreativeYdv  
+#  © 2025 NY Creation | All Rights Reserved  
+# ============================================================
